@@ -161,6 +161,9 @@ def hangman(secret_word):
     #user gets 3 invalid input warnings
     warnings = 3
 
+    #hits, track number of good guesses
+    hits = 0
+
     #init i
     i = 0
 
@@ -176,12 +179,14 @@ def hangman(secret_word):
 
         if letter in secret_word:
           print("Good guess:", get_guessed_word(secret_word, letters_guessed))
+          hits+=1
         else:
           print("Oops! That letter is not in my word:", get_guessed_word(secret_word, letters_guessed))
           i+=1
 
         if is_word_guessed(secret_word, letters_guessed):
           print("Congratulations you have won!")
+          print("Your total score is:", (guesses-i)*hits)
           break
       elif letter in letters_guessed:
         #warning -- already guessed that letter
@@ -328,6 +333,10 @@ def hangman_with_hints(secret_word):
     #user gets 3 invalid input warnings
     warnings = 3
 
+    #hits, track number of good guesses
+    hits = 0
+
+
     #init i
     i = 0
 
@@ -345,12 +354,14 @@ def hangman_with_hints(secret_word):
 
         if letter in secret_word:
           print("Good guess:", get_guessed_word(secret_word, letters_guessed))
+          hits+=1
         else:
           print("Oops! That letter is not in my word:", get_guessed_word(secret_word, letters_guessed))
           i+=1
 
         if is_word_guessed(secret_word, letters_guessed):
           print("Congratulations you have won!")
+          print("Your total score is:", (guesses-i)*hits)
           break
       elif letter in letters_guessed:
         #warning -- already guessed that letter
